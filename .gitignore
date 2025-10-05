@@ -1,7 +1,7 @@
 .env
+mongodb_upload.py
 hotelenv/
 mlruns/
 logs/
 Hotel_Reserrvation.egg-info/
-mongodb_upload.py
 __pycache__/
