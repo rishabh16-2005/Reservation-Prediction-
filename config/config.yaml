@@ -1,0 +1,33 @@
+data_ingestion:
+  DATA_INGESTION_COLLECTION_NAME: 'RESERVATIONDATA'
+  DATA_INGESTION_DATABASE_NAME: 'RISHABHPROJECT'
+
+data_processing:
+  DATA_INGESTION_TRAIN_TEST_SPLIT_RATIO: 0.8
+  target_column: 'booking_status'
+  categorical_columns:
+    - type_of_meal_plan
+    - required_car_parking_space
+    - room_type_reserved
+    - market_segment_type
+    - booking_status
+
+  numerical_columns:
+    - no_of_adults
+    - no_of_children
+    - no_of_weekend_nights
+    - no_of_week_nights
+    - lead_time
+    - arrival_year
+    - arrival_month
+    - arrival_date
+    - no_of_previous_cancellations
+    - no_of_previous_bookings_not_canceled
+    - avg_price_per_room
+    - no_of_special_requests
+    
+  skewness_threshold: 5
+
+  top_features_for_Chi2: 4
+  top_features_for_Anova : 12
+

@@ -1,0 +1,7 @@
+.env
+artifacts/
+hotelenv/
+mlruns/
+logs/
+Hotel_Reserrvation.egg-info/
+mongodb_upload.py

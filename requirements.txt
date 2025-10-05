@@ -1,0 +1,15 @@
+pymongo
+pandas 
+numpy 
+dotenv
+certifi
+scikit-learn
+pyyaml
+ipykernel
+matplotlib
+seaborn
+statsmodels
+imbalanced-learn
+mlflow
+keras
+tensorflow
