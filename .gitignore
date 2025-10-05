@@ -4,4 +4,4 @@ mlruns/
 logs/
 Hotel_Reserrvation.egg-info/
 mongodb_upload.py
-__pycache__
+__pycache__/
