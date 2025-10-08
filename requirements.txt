@@ -13,3 +13,5 @@ imbalanced-learn
 mlflow
 keras
 tensorflow
+flask
+lightgbm

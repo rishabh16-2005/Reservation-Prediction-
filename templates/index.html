@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hotel Reservation Predictor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Elegant background gradient */
+    body {
+      background: linear-gradient(135deg, #f8d49d 0%, #ffaf7b 100%);
+      font-family: "Poppins", sans-serif;
+    }
+
+    /* Glassmorphism Card */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .fade-in {
+      animation: fadeIn 0.7s ease-out;
+    }
+
+    /* Label and Input Styling */
+    .label {
+      @apply block text-gray-700 font-medium mb-1;
+    }
+
+    .input {
+      @apply w-full border border-gray-300 rounded-xl px-3 py-2 text-gray-700 focus:ring-2 focus:ring-orange-400 focus:outline-none transition;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col items-center justify-center p-6">
+
+  <!-- Header -->
+  <header class="text-center mb-10 fade-in">
+    <h1 class="text-5xl font-extrabold text-gray-900 mb-2 drop-shadow-md tracking-tight">
+      🏨 RoyalStay Predictor
+    </h1>
+    <p class="text-gray-700 text-lg font-medium">
+      Predict hotel booking cancellations instantly
+    </p>
+  </header>
+
+  <!-- Main Form Card -->
+  <div class="glass-card rounded-3xl p-10 max-w-4xl w-full fade-in">
+    <h2 class="text-2xl font-semibold text-center text-gray-800 mb-8">
+      Reservation Details
+    </h2>
+
+    <form method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <label class="label">Room Type Reserved</label>
+        <select name="room_type_reserved" required class="input">
+          <option value="0">Room type 1</option>
+          <option value="1">Room type 2</option>
+          <option value="2">Room type 3</option>
+          <option value="3">Room type 4</option>
+          <option value="4">Room type 5</option>
+          <option value="5">Room type 6</option>
+          <option value="6">Room type 7</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="label">Car Parking Required</label>
+        <select name="required_car_parking_space" required class="input">
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="label">Market Segment</label>
+        <select name="market_segment_type" required class="input">
+          <option value="0">Aviation</option>
+          <option value="1">Complementary</option>
+          <option value="2">Corporate</option>
+          <option value="3">Offline</option>
+          <option value="4">Online</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="label">Meal Plan</label>
+        <select name="type_of_meal_plan" required class="input">
+          <option value="0">Meal Plan 1</option>
+          <option value="1">Meal Plan 2</option>
+          <option value="2">Meal Plan 3</option>
+          <option value="3">Not Selected</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="label">Lead Time (days)</label>
+        <input type="number" name="lead_time" required class="input">
+      </div>
+
+      <div>
+        <label class="label">Special Requests</label>
+        <input type="number" name="no_of_special_requests" required class="input">
+      </div>
+
+      <div>
+        <label class="label">Avg. Price per Room</label>
+        <input type="number" name="avg_price_per_room" required class="input">
+      </div>
+
+      <div>
+        <label class="label">Week Nights</label>
+        <input type="number" name="no_of_week_nights" required class="input">
+      </div>
+
+      <div>
+        <label class="label">Adults</label>
+        <input type="number" name="no_of_adults" required class="input">
+      </div>
+
+      <div>
+        <label class="label">Weekend Nights</label>
+        <input type="number" name="no_of_weekend_nights" required class="input">
+      </div>
+
+      <div>
+        <label class="label">Children</label>
+        <input type="number" name="no_of_children" required class="input">
+      </div>
+
+      <div>
+        <label class="label">Prev. Non-Canceled Bookings</label>
+        <input type="number" name="no_of_previous_bookings_not_canceled" required class="input">
+      </div>
+
+      <div>
+        <label class="label">Prev. Cancellations</label>
+        <input type="number" name="no_of_previous_cancellations" required class="input">
+      </div>
+
+      <div class="md:col-span-2 text-center mt-4">
+        <button type="submit"
+          class="w-full md:w-1/2 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-2xl shadow-lg transition duration-300">
+          🔮 Predict Now
+        </button>
+      </div>
+    </form>
+
+   {% if prediction is not none %}
+    <div class="mt-8 text-center fade-in">
+      {% if prediction == 0 %}
+      <div class="bg-red-100 border-l-4 border-red-600 text-red-700 p-4 rounded-lg shadow-md">
+        <p class="text-lg font-semibold">🚫 The customer is likely to cancel the reservation.</p>
+      </div>
+      {% elif prediction == 1 %}
+      <div class="bg-green-100 border-l-4 border-green-600 text-green-700 p-4 rounded-lg shadow-md">
+        <p class="text-lg font-semibold">✅ The customer will likely keep the reservation.</p>
+      </div>
+      {% endif %}
+    </div>
+{% endif %}
